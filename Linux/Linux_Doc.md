@@ -5,7 +5,7 @@
 The topmost directory in the Linux file system. All other files and directories are contained within this.
 
 ### 2. /bin
-- Contains essential user binaries (programs) like ls, cp, mv, cat, grep, su, touch  etc.
+- Contains essential user binaries (programs) like bash, ls, cp, mv, cat, grep, su, touch  etc.
 - These are necessary for the system to function in single-user mode.
 
 ```bash
@@ -58,3 +58,69 @@ LOGO=ubuntu-logo
 ### 17. /tmp
 ### 18. /usr
 ### 19. /var
+
+
+## Basic Commands: 
+## ls :
+- Lists files and directories in the current directory.
+
+```bash
+root@habib-VirtualBox:/# ls
+```
+- Displays details like permissions, owner, group, file size, and modification time.
+
+```bash
+root@habib-VirtualBox:/# ls -l
+```
+- Shows all files, including hidden ones (files beginning with .).
+
+```bash
+root@habib-VirtualBox:/# ls -a
+```
+- Lists all files, including hidden ones, with detailed information.
+```bash
+root@habib-VirtualBox:/# ls -la
+```
+- Shows file sizes in a human-readable format (e.g., KB, MB).
+```bash
+root@habib-VirtualBox:/# ls -lh
+```
+- Sorts files by modification time, with the most recent first.
+```bash
+root@habib-VirtualBox:/# ls -lt
+```
+- Displays the listing in reverse order (can combine with other options, e.g., ls -ltr).
+```bash
+root@habib-VirtualBox:/# ls -lr
+```
+- Lists contents of directories and their subdirectories recursively.
+```bash
+root@habib-VirtualBox:/# ls -R
+```
+- Appends indicators to files:
+   - / for directories
+   - "*" for executable files
+   - @ for symbolic links
+
+```bash
+root@habib-VirtualBox:/# ls -F
+```
+- Displays only directories in the current location.
+```bash
+root@habib-VirtualBox:/# ls -d */
+```
+- Sorts files by size, with the largest first.
+```bash
+root@habib-VirtualBox:/# ls -lS
+```
+- Displays the inode number of each file
+```bash
+root@habib-VirtualBox:/# ls -lS
+```
+## cd
+## mv
+## rm
+## mkdir:
+## cat:
+# touch:
+## grep : 
