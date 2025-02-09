@@ -1,10 +1,9 @@
 # What is Docker?
 Docker is a **containerization platform that provides a complete system for building and running software containers**. Containers package applications and their dependencies as ephemeral units that behave similarly to virtual machines, but share your host’s operating system kernel. **Containers ensure that our application works in any environment like development, test, or production.**
 
-# Docker Architecture
-Docker uses a **client-server driven architecture**.
+![Reference Image](/Docker/screenshort/docker_vm.png)
 
-#### Docker Engine
+# Docker Engine 
 1. Docker Daemon (dockerd)
     - Runs in the background and listens for Docker API requests.
     - Manages images, containers, networks, and storage volumes.
@@ -18,5 +17,9 @@ Docker uses a **client-server driven architecture**.
 
 ![Reference Image](/Docker/screenshort/docker_engine.png)
 
+## Docker Architecture
 
+Docker uses a client-server architecture. **The Docker client talks to the Docker daemon**, which does the heavy lifting of building, running, and distributing your Docker containers. **The Docker client and daemon can run on the same system**, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
+
+![Reference Image](/Docker/screenshort/docker_architecture.gif)
 
