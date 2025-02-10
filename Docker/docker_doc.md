@@ -23,3 +23,86 @@ Docker uses a client-server architecture. **The Docker client talks to the Docke
 
 ![Reference Image](/Docker/screenshort/docker_architecture.gif)
 
+
+## How to install docker linux?
+
+#### First Check Firewall limitations, OS requirements
+
+```bash
+habib@habib-VirtualBox:~$ cat /etc/*release*
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=24.04
+DISTRIB_CODENAME=noble
+DISTRIB_DESCRIPTION="Ubuntu 24.04.1 LTS"
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.1 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+```
+
+#### Uninstall old versions
+The unofficial packages to uninstall are:
+- docker.io
+- docker-compose
+- docker-compose-v2
+- docker-doc
+- podman-docker
+```bash
+$ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+```
+
+#### Install using the convenience script
+
+```bash
+ $ curl -fsSL https://get.docker.com -o get-docker.sh
+ $ sudo sh ./get-docker.sh --dry-run
+```
+#### Now Check docker version
+
+```bash
+$ sudo docker version
+```
+
+```bash
+abib@habib-VirtualBox:~$ sudo docker version
+Client: Docker Engine - Community
+ Version:           27.5.1
+ API version:       1.47
+ Go version:        go1.22.11
+ Git commit:        9f9e405
+ Built:             Wed Jan 22 13:41:48 2025
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          27.5.1
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.22.11
+  Git commit:       4c9b3b0
+  Built:            Wed Jan 22 13:41:48 2025
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.7.25
+  GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+ runc:
+  Version:          1.2.4
+  GitCommit:        v1.2.4-0-g6c52b3f
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+```
+
+
