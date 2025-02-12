@@ -105,4 +105,213 @@ Server: Docker Engine - Community
 
 ```
 
+```bash
+ docker --version
+```
+
+# Docker commands
+
+### Docker pull 
+
+docker pull is a command used in Docker to download a Docker image from a remote registry (such as Docker Hub) to your local machine.
+
+```bash
+docker pull <image_name>:<tag>
+```
+```bash
+docker pull nginx
+```
+or
+```bash
+docker pull nginx: stable-alpine3.20-perl
+```
+### Run - start a container
+The docker run command is used to run a container from an image.
+
+```bash
+docker run nginx
+```
+or 
+- add custom name image
+```bash
+docker run  --name app1 nginx
+```
+## Docker ps - list containers 
+docker ps is a command used in Docker to list running containers.
+```bash
+docker ps [OPTIONS]
+```
+1. List only running containers:
+```bash
+docker ps 
+```
+```bash
+CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS     NAMES
+793ca6cfa57c   nginx     "/docker-entrypoint.…"   2 hours ago   Up 2 hours   80/tcp    hardcore_thompson
+```
+2.List all containers (including stopped ones):
+
+```bash
+docker ps -a
+```
+```bash
+CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS     NAMES
+793ca6cfa57c   nginx     "/docker-entrypoint.…"   2 hours ago   Up 2 hours   80/tcp    hardcore_thompson
+```
+3. Show only container IDs: 
+
+```bash
+docker ps -q
+```
+
+4. Filter containers by status (e.g., exited):
+
+```bash
+docker ps -a -f "status=exited"
+```
+
+5. Custom output format (show only names and status):
+
+```bash
+docker ps --format "table {{.Names}}\t{{.Status}}"
+```
+```bash
+NAMES               STATUS
+hardcore_thompson   Up 2 hours
+```
+
+## Docker stop
+
+1. First check lists all running container
+
+```bash
+docker ps -a
+```
+```bash
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+d618b53c4ea2   nginx     "/docker-entrypoint.…"   24 seconds ago   Up 24 seconds   80/tcp    app1
+793ca6cfa57c   nginx     "/docker-entrypoint.…"   2 hours ago      Up 2 hours      80/tcp    hardcore_thompson
+```
+2. Stop container
+
+stop container id
+
+```bash
+docker stop d618b53c4ea2
+```
+or container name 
+```bash
+docker stop hardcore_thompson
+```
+## Force Stop a Container:
+```bash
+docker kill <container_id>
+```
+```bash
+docker kill 793ca6cfa57c
+```
+## Docker container start
+
+```bash
+docker container start <container_id> [<container_id2> ...]
+```
+
+or 
+
+```bash
+docker start <container_id> [<container_id2> ...]
+```
+
+```bash
+docker start 793ca6cfa57c
+```
+Now we check running docker container
+
+```bash
+docker ps -a
+```
+```bash
+d618b53c4ea2   nginx     "/docker-entrypoint.…"   2 hours ago   Up 2 hours      80/tcp    app1
+793ca6cfa57c   nginx     "/docker-entrypoint.…"   4 hours ago   Up 16 seconds   80/tcp    hardcore_thompson
+```
+
+## Start all stopped containers:
+
+```bash
+docker start $(docker ps -a -q)
+```
+- docker ps -a -q lists all stopped container IDs.
+- The docker start command starts them one by one.
+
+## Start a container and attach to its logs (interactive mode):
+
+```bash
+docker start -a my_container
+```
+or 
+
+```bash
+docker start -a 793ca6cfa57c
+```
+## How to show images
+
+```bash
+docker images
+```
+```bash
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+nginx        latest    97662d24417b   6 days ago    192MB
+ubuntu       latest    a04dc4851cbc   2 weeks ago   78.1MB
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
