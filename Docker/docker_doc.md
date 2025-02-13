@@ -265,28 +265,74 @@ ubuntu       latest    a04dc4851cbc   2 weeks ago   78.1MB
 ```
 
 
+## Docker Inspect command :
+The docker inspect command is used to retrieve detailed information about a Docker 
+**container, image, network, or volume in JSON format**. <br />
+
+It provides low-level system details such as 
+- container configuration, 
+- network settings, 
+- mount points, 
+- and runtime information.
 
 
+```bash
+docker inspect <object_id_or_name>
+```
 
+#### Inspect a Running or Stopped Container:
 
+```bash
+docker inspect my_container
+```
+or 
 
+```bash
+docker inspect 123456789abc
+```
 
+#### Inspect a Docker Image:
 
+```bash
+docker images
+```
+```bash
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+nginx        latest    97662d24417b   7 days ago    192MB
+ubuntu       latest    a04dc4851cbc   2 weeks ago   78.1MB
+alpine       latest    b0c9d60fc5e3   5 weeks ago   7.83MB
+```
+```bash
+docker inspect ubuntu
+```
 
+#### Get Specific Information (Using --format):
 
+```bash
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' my_container
+```
+#### Get the container's ID:
+```bash
+docker inspect -f '{{ .Id }}' my_container
+```
+#### Check the container's status:
 
+```bash
+docker inspect -f '{{ .State.Status }}' my_container
+```
 
+#### Key Information Retrieved:
+- Container: ID, Image, Command, Created Time, Status, Environment Variables, Mounts, Network Settings, etc.
+- Image: ID, Parent ID, RepoTags, Size, Architecture, etc.
+- Network: Name, ID, Subnet, Gateway, Connected Containers, etc.
+- Volume: Name, Mount Path, Scope, etc.
 
-
-
-
-
-
-
-
-
-
-
+#### Use Case Scenarios:
+- Checking the IP address of a running container.
+- Finding the mount path of a volume.
+- Debugging network issues in Docker.
+- Retrieving environment variables or labels of a container.
+- Validating the image configuration before running a container.
 
 
 
