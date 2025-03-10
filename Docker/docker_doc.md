@@ -1,6 +1,14 @@
 # What is Docker?
 Docker is a **containerization platform that provides a complete system for building and running software containers**. Containers package applications and their dependencies as ephemeral units that behave similarly to virtual machines, but share your host’s operating system kernel. **Containers ensure that our application works in any environment like development, test, or production.**
 
+Some popular containerization tools include 
+- Docker 
+- Kubernetes
+- Amazon Elastic Container Service(ECS)
+- Docker Swarm
+- Openshift
+- podman (Res Hat Linux)
+
 ![Reference Image](/Docker/screenshort/docker_vm.png)
 
 # Docker Engine 
@@ -70,11 +78,10 @@ $ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker
 #### Now Check docker version
 
 ```bash
-$ sudo docker version
+$ docker --version
 ```
-
 ```bash
-abib@habib-VirtualBox:~$ sudo docker version
+habib@habib-VirtualBox:~$ sudo docker version
 Client: Docker Engine - Community
  Version:           27.5.1
  API version:       1.47
@@ -104,9 +111,9 @@ Server: Docker Engine - Community
   GitCommit:        de40ad0
 
 ```
-
+#### If we know how many images and containers are on my server we used this command
 ```bash
- docker --version
+$ docker info
 ```
 
 # Docker commands
@@ -135,6 +142,11 @@ or
 - add custom name image
 ```bash
 docker run  --name app1 nginx
+```
+or 
+- add -d (-d mean run background)
+```bash
+docker run  -d --name app1 nginx
 ```
 ## Docker ps - list containers 
 docker ps is a command used in Docker to list running containers.
@@ -263,8 +275,13 @@ REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 nginx        latest    97662d24417b   6 days ago    192MB
 ubuntu       latest    a04dc4851cbc   2 weeks ago   78.1MB
 ```
+## What is ENTRYPOINT in Docker?
+The ENTRYPOINT in Docker is a directive used in a Dockerfile to define the default executable (command) that runs when a container starts.
 
-
+## Key Points:
+- It specifies the main process that should run inside the container.
+- Unlike CMD, ENTRYPOINT cannot be overridden by command-line arguments unless explicitly modified.
+- It is commonly used when you want the container to behave like an executable program.
 ## Docker Inspect command :
 The docker inspect command is used to retrieve detailed information about a Docker 
 **container, image, network, or volume in JSON format**. <br />
